@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"io"
 	"net/http"
 
 	"github.com/davecgh/go-spew/spew"
@@ -15,7 +14,7 @@ func handleGetBlockchain(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	io.WriteString(w, string(bytes))
+	w.Write(bytes)
 }
 
 func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload interface{}) {
